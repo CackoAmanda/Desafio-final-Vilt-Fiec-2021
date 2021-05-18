@@ -98,9 +98,9 @@
 							type="text" class="form-control" id="cpf" name="cpf"
 							onclick="style.outline = null" required></li>
 						<li class="col-md-3"><label class="form-label">Nascimento*</label>
-							<input type="text" class="form-control" id="data" name="nasc"
-							onclick="style.outline = null" required placeholder="dd/mm/aaaa">
-						</li>
+							<input type="text" class="form-control" id="data"
+							data-mask="00/00/0000" name="nasc" onclick="style.outline = null"
+							required placeholder="dd/mm/aaaa"></li>
 						<li class="col-md-3"><label class="form-label">Sexo*</label>
 							<select id="sexo" class="form-select" name="sexo"
 							onclick="style.outline = null" required>
@@ -267,9 +267,8 @@
 		</section>
 	</c:if>
 	<footer>
-		Copyright 2021 | VILT GROUP <br>
-		<br>
-		<div class="d-grid gap-2 d-md-block">
+		Copyright 2021 | VILT GROUP <br> <br>
+		<div id="button" class="d-grid gap-2 d-md-block">
 			<button type="button" class="btn btn-link"
 				onclick=" window.open('https://www.fiec.com.br/site/index.do','_blank')"
 				href="#fiec">
@@ -290,6 +289,8 @@
 	<!-- js -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/utilizando-bootstrap.js"></script>
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/jquery.mask.min.js"></script>
 
 </body>
 

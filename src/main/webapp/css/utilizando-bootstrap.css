@@ -85,4 +85,8 @@ footer {
   background: #06549c;
   color: #fff;
   text-align: center;
+  button:focus { 
+  outline: none;
+  }
 }
+
