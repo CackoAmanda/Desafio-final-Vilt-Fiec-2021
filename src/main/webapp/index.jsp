@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="WEB-INF/mytags.tld" prefix="fiec"%>
+<%@ page session="true" %>
+
 <fiec:armazenamento />
 
 <!doctype html>
@@ -23,19 +25,38 @@
 </head>
 
 <body>
+	<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	%>
 	<c:set var="quantidadeDeAlunos" value="${fn:length(alunos)}" />
 	<c:set var="aprovados" value="${false}" />
 	<c:set var="reprovados" value="${false}" />
-	<nav class="nav fixed-top justify-content-center navbar-dark bg-dark">
-		<a class="navbar-brand" href="#conteudo">Conteúdo</a> <a
-			class="navbar-brand" href="#cadastrar">Cadastrar</a>
+	<nav class="navbar fixed-top navbar-dark bg-dark">
+		<div>
+		<a class="navbar-brand" href="#conteudo">Conteúdo</a> 
+		<c:if test="${loginSucesso == true}">
+		<a class="navbar-brand" href="#cadastrar">Cadastrar</a>
+		</c:if>
 		<c:if test="${quantidadeDeAlunos > 0}">
 			<a class="navbar-brand" href="#lista">Lista de alunos</a>
+		</c:if>
+		</div>
+		<c:if test="${loginSucesso == false || loginSucesso == null}">
+		      <div class="d-grid gap-2 col-2 d-md-flex justify-content-md-end">
+		      <button id= "login" class="btn btn-light"
+		      onclick="window.location='login.jsp'">LOGIN</button>
+		      </div>
+		</c:if>
+		<c:if test="${loginSucesso == true}">
+			<form class="d-grid gap-2 col-2 d-md-flex justify-content-md-end" action="logout" method="POST">
+			<button type="submit" value="logout" id="logout" 
+			class="btn btn-light" >SAIR</button>
+			</form>
 		</c:if>
 	</nav>
 
 	<header>
-		<h1>Treinamento Indaiatuba Abril 2021</h1>
+		</br></br><h1>Treinamento Indaiatuba Abril 2021</h1>
 	</header>
 
 	<section id="banner">
@@ -84,11 +105,12 @@
 				culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
 	</section>
-
+	
+	<c:if test="${loginSucesso == true}">
 	<section id="cadastrar">
 		<div class="my-container">
 			<h2>Cadastro de Aluno</h2>
-			<form class="needs-validation" action="index.jsp" novalidate>
+			<form class="needs-validation" action="index.jsp"  novalidate>
 				<ul>
 					<div class="row g-3">
 						<li class="mb-3"><label class="form-label">Nome
@@ -135,6 +157,7 @@
 			</form>
 		</div>
 	</section>
+	</c:if>
 
 	<c:if test="${quantidadeDeAlunos > 0}">
 		<section id="lista">
@@ -269,14 +292,14 @@
 	<footer>
 		Copyright 2021 | VILT GROUP <br> <br>
 		<div id="button" class="d-grid gap-2 d-md-block">
-			<button type="button" class="btn btn-link"
+			<button type="button" id="botao-fiec" class="btn btn-link"
 				onclick=" window.open('https://www.fiec.com.br/site/index.do','_blank')"
 				href="#fiec">
 				<img
 					src=https://fiecvirtual.com.br/pluginfile.php/1/core_admin/logo/0x300/1575286970/005.png
 					width="103.2" height="30" alt="">
 			</button>
-			<button type="button" class="btn btn-link"
+			<button type="button" id="botao-vilt" class="btn btn-link"
 				onclick=" window.open('https://www.vilt-group.com/pt/','_blank')"
 				href="#vilt">
 				<img
@@ -287,10 +310,13 @@
 	</footer>
 
 	<!-- js -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/utilizando-bootstrap.js"></script>
+	
+	
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/jquery.mask.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/utilizando-bootstrap.js"></script>
+	<script src="js/validacoes.js" type="text/javascript"></script>
 
 </body>
 

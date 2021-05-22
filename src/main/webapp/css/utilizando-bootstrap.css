@@ -26,6 +26,9 @@ nav a:hover {
   font-weight: bold;
 }
 
+#login {
+}
+
 ul {
   margin: 0;
   padding: 0 0 0 16px;
@@ -85,8 +88,16 @@ footer {
   background: #06549c;
   color: #fff;
   text-align: center;
-  button:focus { 
-  outline: none;
-  }
 }
 
+#botao-fiec:focus, #botao-fiec:active{
+	outline: none;
+	border: none;
+	box-shadow: none;
+}
+
+#botao-vilt:focus, #botao-vilt:active{
+	outline: none;
+	border: none;
+	box-shadow: none;
+}

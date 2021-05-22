@@ -1,0 +1,30 @@
+div {
+	padding: 5em;
+}
+
+body {
+	color: white;
+	background: linear-gradient(90deg, #f58383, #ba7ff4, #96e7f7);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 100vh;
+}
+
+.form {
+	background: rgba(255, 255, 255, 0.1);
+    border-radius: 2em 2em 2em 2em;
+	backdrop-filter: blur(12px);
+	box-shadow: 0 26px 42px rgba(0, 0, 0 0.1);
+}
+
+input, button {
+	color: white;
+	border: none;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 2em;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	box-shadow: 0 13px 21px rgba(0, 0, 0, 0.05);
+}
